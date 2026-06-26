@@ -72,3 +72,9 @@ Original work, written from scratch. Inspired by the general idea of a weekly AI
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+---
+
+## Part of claude-code-skills
+
+This skill ships in the [claude-code-skills](https://zavelinski.github.io/claude-code-skills/) marketplace. Browse its landing page: [weekly-ai-digest](https://zavelinski.github.io/claude-code-skills/weekly-ai-digest.html). See also: [content-repurpose-engine](https://github.com/Zavelinski/claude-code-content-repurpose-engine), [docs-drift-sync](https://github.com/Zavelinski/claude-code-docs-drift-sync).
