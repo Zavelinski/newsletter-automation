@@ -9,6 +9,46 @@ A [Claude Code](https://claude.com/claude-code) skill that produces a **sourced,
 
 It is **source-agnostic** and degrades gracefully: it uses the [`last30days`](https://github.com/) plugin if you have it installed, otherwise falls back to `WebSearch` + the Perplexity MCP. Whatever you have, it works.
 
+## Prerequisites
+
+Claude Code with `/plugin` support (v2.x+) and a shell if you use the manual fallback.
+
+## Install
+
+### Option 1 — Claude Code plugin marketplace (recommended)
+
+```bash
+/plugin marketplace add Zavelinski/claude-code-skills
+/plugin install weekly-ai-digest@claude-code-skills
+```
+
+Registered hooks (if any) install through the Claude Code consent UI, with no manual edit to `~/.claude/settings.json`.
+
+### Option 2 — Manual fallback (run it yourself)
+
+> **Security note.** This script mutates `~/.claude/settings.json` directly. Claude Code auto-mode blocks it because a third-party `UserPromptSubmit` hook that injects text into every prompt is a known risk vector. The script is benign and local-only (no network), but you must review and run it yourself. Prefer Option 1.
+
+```bash
+git clone https://github.com/Zavelinski/claude-code-weekly-ai-digest.git
+cd claude-code-weekly-ai-digest
+bash install.sh        # macOS / Linux
+.\install.ps1          # Windows (PowerShell)
+```
+
+## Uninstall
+
+```bash
+/plugin uninstall weekly-ai-digest@claude-code-skills    # Option 1
+bash uninstall.sh                                # Option 2 (or uninstall.ps1 on Windows)
+```
+
+## Update
+
+```bash
+/plugin marketplace update claude-code-skills    # Option 1
+# Option 2: pull the latest commit and re-run the manual fallback.
+```
+
 ## What it does
 
 1. **Collect** — last30days plugin first (Reddit / HN / YouTube / X / Polymarket); else WebSearch with a 7-day recency filter + Perplexity for grounded summaries. Covers lab blogs, arXiv, HN front page, r/LocalLLaMA, r/MachineLearning.
@@ -19,41 +59,11 @@ It is **source-agnostic** and degrades gracefully: it uses the [`last30days`](ht
 
 Output defaults to `ai-digest-<YYYY>-W<week>.md` in the current directory.
 
-## Install
-
-```bash
-git clone https://github.com/Zavelinski/claude-code-weekly-ai-digest.git
-cd newsletter-automation
-```
-
-**macOS / Linux**
-```bash
-bash install.sh
-```
-
-**Windows (PowerShell)**
-```powershell
-.\install.ps1
-```
-
-This is a skill-only install (no hooks, no `settings.json` changes) — it just copies one folder into `~/.claude/skills/`. Restart Claude Code, then ask for a **weekly AI digest** (or `/weekly-ai-digest`).
-
-> Optional but recommended: install the `last30days` plugin for the richest collection. Without it, the skill falls back to `WebSearch` + Perplexity automatically.
-
 ## Use
 
 - "give me the weekly AI digest"
 - "what happened in AI this week"
 - "/weekly-ai-digest, last 14 days, just open-weights models"
-
-## Uninstall
-
-```bash
-bash uninstall.sh      # macOS / Linux
-```
-```powershell
-.\uninstall.ps1        # Windows
-```
 
 ## Provenance
 
@@ -62,14 +72,3 @@ Original work, written from scratch. Inspired by the general idea of a weekly AI
 ## License
 
 MIT. See [LICENSE](LICENSE).
-
----
-
-## Install as a Claude Code plugin
-
-```bash
-/plugin marketplace add Zavelinski/claude-code-skills
-/plugin install weekly-ai-digest@claude-code-skills
-```
-
-Part of the **[claude-code-skills](https://github.com/Zavelinski/claude-code-skills)** collection: a suite of focused, original Claude Code skills.
