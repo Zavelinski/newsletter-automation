@@ -1,5 +1,10 @@
 # weekly-ai-digest for Claude Code
 
+[![License: MIT](https://img.shields.io/github/license/Zavelinski/newsletter-automation)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/Zavelinski/newsletter-automation?style=flat)](https://github.com/Zavelinski/newsletter-automation/stargazers)
+[![Last commit](https://img.shields.io/github/last-commit/Zavelinski/newsletter-automation)](https://github.com/Zavelinski/newsletter-automation/commits)
+[![Claude Code skill](https://img.shields.io/badge/Claude%20Code-skill-8A2BE2)](https://claude.com/claude-code)
+
 A [Claude Code](https://claude.com/claude-code) skill that produces a **sourced, skimmable weekly AI roundup**. Ask for "what happened in AI this week" and Claude pulls the last 7 days from multiple sources, dedupes and clusters by story, ranks by signal, and writes a link-backed markdown digest. No hype, every factual claim linked.
 
 It is **source-agnostic** and degrades gracefully: it uses the [`last30days`](https://github.com/) plugin if you have it installed, otherwise falls back to `WebSearch` + the Perplexity MCP. Whatever you have, it works.
